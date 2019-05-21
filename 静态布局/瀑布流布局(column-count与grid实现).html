@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>column-count与grid实现瀑布流布局</title>
+        <meta charset="utf-8"/>
+        <!-- <style>
+            .container {
+                column-count: 4;
+                column-gap: 0.5vw;
+                margin-top: 0.5vh;
+            }
+            .queue {
+               break-inside: avoid; /*避免在元素内部插入分页符 */
+            }
+
+            /* .container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(8, 1fr)
+            }
+            .queue {
+              background: #f5f5f5;
+              margin: 0.5vw;
+            } */
+
+
+            /* .queue:nth-child(1) {
+                background: skyblue;
+            } */
+            .queue:nth-child(1) .row{
+                height: 50px;
+                margin: 10px 0;
+                background: pink;
+            }
+            /* .queue:nth-child(2) {
+                background: blue;
+            } */
+            .queue:nth-child(2) .row{
+                height: 75px;
+                margin: 10px 0;
+                background: pink;
+            }
+            /* .queue:nth-child(3) {
+                background: yellow;
+            } */
+            .queue:nth-child(3) .row{
+                height: 100px;
+                margin: 10px 0;
+                background: pink;
+            }
+            /* .queue:nth-child(4) {
+                background: red;
+            } */
+            .queue:nth-child(4) .row{
+                height: 125px;
+                margin: 10px 0;
+                background: pink;
+            }
+        </style> -->
+        <!--
+            display: grid实现
+        -->
+        <style>
+            .container {
+                display: grid;
+                grid-template-columns: repeat(4, 50px);  /*4行8列*/
+                grid-template-rows: repeat(8, 60px)
+            }
+            .item {
+              background: hsl(0, 0%, 96%);
+              margin: 0.5vw;
+              /* height: 2vw; */
+            }
+            .item:nth-child(1) {
+                grid-column: 1;
+                background: red;
+                grid-row: 1 / 3
+            }
+            .item:nth-child(2) {
+                grid-column: 2;
+                background: blue;
+                grid-row: 1/4
+            }
+            .item:nth-child(3) {
+                grid-column: 3;
+                background: green;
+                grid-row: 1/5
+            }
+            .item:nth-child(4) {
+                grid-column: 4;
+                background: yellow;
+                grid-row: 1/6
+            }
+            .item:nth-child(5) {
+                grid-column: 1;
+                background: red;
+                grid-row: 3/9
+            }
+            .item:nth-child(6) {
+                grid-column: 2;
+                background: red;
+                grid-row: 4/9
+            }
+            .item:nth-child(7) {
+                grid-column: 3;
+                background: red;
+                grid-row: 5/9
+            }
+            .item:nth-child(8) {
+                grid-column: 4;
+                background: red;
+                grid-row: 6/9
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            瀑布流布局
+                使用scss，可以在css中使用js计算，比较方便，但是渲染效率是否回因此变慢？
+        -->
+        <!-- <div class="container">
+            <div class="queue">
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+            </div>
+            <div class="queue">
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                </div>
+                <div class="queue">
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                    </div>
+                    <div class="queue">
+                            <div class="row"></div>
+                            <div class="row"></div>
+                            <div class="row"></div>
+                            <div class="row"></div>
+                            <div class="row"></div>
+                        </div>
+        </div> -->
+
+
+        <!--
+            display: grid实现
+
+        -->
+        <div class="container">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </body>
+</html>

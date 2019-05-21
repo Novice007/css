@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>水平垂直居中浮动元素</title>
+        <meta charset="utf-8"/>
+        <style>
+            .container{
+                height: 300px;
+                width: 100%;
+                background:#ccc;
+            }
+            .middle{
+                float:left;
+                width: 100px;
+                height: 100px;
+                background: #000;
+                position: relative;
+                left: -50px;
+                /* top: 50%; */
+                margin-left: 50%;
+                /* margin-top: -5px; */
+            }
+        </style>
+
+    </head>
+    <body>
+       
+        <div class="container">
+            <div class="middle"></div>
+        </div>
+        <!--
+
+            水平居中可以在浮动元素样式中添加
+                margin-left: 50%;
+                position: relative;
+                left: -width/2
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -width/2
+                margin-top: -height/2
+
+
+
+            垂直居中在浮动元素上动手脚：
+                position: relative;
+                top: 50%;
+                margin-top: -height/2
+
+            垂直居中可以在浮动元素的父元素上动手脚：
+                padding-top: (父元素高度-浮动元素高度)/2
+                box-sizing: border-box;
+
+                缺点：
+                    高度不固定时不好处理
+
+
+                // 父元素需要设置宽高，否则父元素的宽高跟浮动元素一样
+                display: table-cell;
+                vertical-align: middle;
+
+            
+        -->
+    </body>
+</html>

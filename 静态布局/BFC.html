@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BFC块级格式化上下文</title>
+        <meta charset="utf-8"/>
+        <style>
+            .container{
+                width: 600px;
+                /* height: 400px; */
+                /* margin: auto; */
+                background: #999;
+            }
+            .top{
+                width: 200px;
+                height: 200px;
+                float:left;
+                background:yellow;
+            }
+            .bottom{
+                width: 200px;
+                height: 100px;
+                background: blue;
+            }
+
+            .b1,.b2{
+                float: left;
+                background: #fff;
+                width: 50px;
+                height: 50px;
+            }
+            
+
+            div {  
+    position: relative;  
+    width: 100px;  
+    height: 100px;  
+  }  
+  p {  
+    position: absolute;  
+    font-size: 20px;  
+    width: 100px;  
+    height: 100px;  
+  }  
+  .a {  
+    background-color: blue;  
+    z-index: 1;  
+  }  
+  .b {  
+    background-color: green;  
+    z-index: 2;  
+    top: 20px;  
+    left: 20px;  
+  }  
+  .c {  
+    position: relative;
+    background-color: red;  
+    z-index: 3;  
+    top: -20px;  
+    left: 40px;  
+  }
+    .c:before{
+        content: "";
+        position:absolute;
+        top: 10px;
+        left: 100px;
+        border-width: 20px;
+        border-style: solid;
+        border-color: transparent transparent transparent red;
+    }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="top">
+                <div class="middle">middle</div>
+                <div class="left">left</div>
+                <div class="right">right</div>
+            </div>
+            <span style="background: black">这里是行内元素</span>
+            <div class="bottom">
+                <!--b1跟b2浮动时，文字层不会被浮动层覆盖，而是环绕其周围，.bottom使用overflow时，形成的BFC不会与浮动层重叠-->
+                <div class="b1">b1</div>
+                <div class="b2">b2</div>
+            </div>
+            
+        </div>
+
+        <!--层级上下文-->
+        <div>  
+            <p class="a">a</p>  
+            <p class="b">b</p>  
+        </div> 
+        
+        <div>  
+            <p class="c">c</p>  
+        </div>  
+    </body>
+</html>

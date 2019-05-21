@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>圣杯布局</title>
+        <style>
+            .container{
+                /* width: 600px; */
+                height: 400px;
+                margin: auto;
+                padding: 0 100px;
+                background: #999;
+                overflow:visible;
+            }
+            .container>div {
+                float: left;
+                width: 100px;
+                height: 100%;
+                
+            }
+            .container>div.middle {
+                width: 100%;
+                background: skyblue
+            }
+            .left {
+                position: relative;
+                left: -100px;
+                margin-left: -100%;
+                background: red;
+            }
+            .right {
+                background: green;
+                /*margin-left: -100%;
+                right: -100px;*/
+                margin-right: -100%;
+            }
+        </style>
+    </head>
+    <body>
+        <!--圣杯布局实现：
+            1、左中右三栏布局，要求中间div先渲染而且宽度自适应。
+             解决：html按照从上至下的方式渲染，所以中间的div 要写在前面。
+            margin-left: -左边div的宽度可以让左边div不换行（float布局下），-100%可以在父元素content区域的左边
+            position: relative不改变元素的位置，left值只是把位置挪动但是文档中依然保留原来的位置
+            display: inline-block表现得行内快元素之间有固定间隙 *{margin:0;padding: 0}消除不了，而且下一个兄弟元素是块元素时，该快元素不会跟这个inline=block处在同一行上，float可以
+            
+
+            2、flex布局方式： order表示flex盒子中每个元素的显示顺序
+                order: 1-2-3-4表示第一个，第二个、第三个、第四个
+        -->
+        <div class="container">
+            <div class="middle">middle</div>
+            <div class="left">left</div>
+            <div class="right">right</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width"/>
+        <title>css实现spinner加载动画</title>
+        <style>
+           .scroll-container{
+               width: 400px;
+               height: 450px;
+               overflow:hidden;
+               border: 1px solid #000
+           }
+           .scroll-container ul{
+               position: relative;
+               animation: move  15s linear infinite;
+               -webkit-animation: move  15s linear infinite;
+               z-index: 1;
+               margin: 0;
+           }
+           .scroll-container ul:hover {
+               animation-play-state:paused;
+           }
+           .scroll-container ul li{
+               height: 50px;
+               line-height: 50px;
+               font-size: 16px;
+                list-style-type:none;
+                position: relative;
+                z-index: 1;
+           }
+            
+            /* 0% { */
+                    /* top: -900px; */
+                    /* transform: translateY(-360px); */
+                    /* margin-top: -900px; */
+                    /* transform: translateZ(0) */
+                /* }
+                50%{ */
+                    /* top: -450px; */
+                    /* transform: translateY(-180px); */
+                    /* transform: translateZ(0); */
+                    /* margin-top: -450px; */
+                /* }
+                100% { */
+                    /* top:0; */
+                    /* transform: translateY(0,0,0); */
+                    /* transform: translateZ(0) */
+                    /* margin-top: 0px; */
+                /* } */
+            @keyframes move {
+                from{
+                    transform: translateY(-900px);
+                    transition: all 0ms linear 0s
+                }
+                to {
+                    transform: translateY(0);
+                    transition: all 0ms linear 0s
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        <div class="scroll-container">
+            <ul>
+                <li>css实现无缝滚动第一行</li>
+                <li>css实现无缝滚动第二行</li>
+                <li>css实现无缝滚动第三行</li>
+                <li>css实现无缝滚动第四行</li>
+                <li>css实现无缝滚动第五行</li>
+                <li>css实现无缝滚动第六行</li>
+                <li>css实现无缝滚动第七行</li>
+                <li>css实现无缝滚动第八行</li>
+                <li>css实现无缝滚动第九行</li>
+                <li>css实现无缝滚动第一行</li>
+                <li>css实现无缝滚动第二行</li>
+                <li>css实现无缝滚动第三行</li>
+                <li>css实现无缝滚动第四行</li>
+                <li>css实现无缝滚动第五行</li>
+                <li>css实现无缝滚动第六行</li>
+                <li>css实现无缝滚动第七行</li>
+                <li>css实现无缝滚动第八行</li>
+                <li>css实现无缝滚动第九行</li>
+                <li>css实现无缝滚动第一行</li>
+                <li>css实现无缝滚动第二行</li>
+                <li>css实现无缝滚动第三行</li>
+                <li>css实现无缝滚动第四行</li>
+                <li>css实现无缝滚动第五行</li>
+                <li>css实现无缝滚动第六行</li>
+                <li>css实现无缝滚动第七行</li>
+                <li>css实现无缝滚动第八行</li>
+                <li>css实现无缝滚动第九行</li>
+            </ul>
+
+        </div>  
+
+    </body>
+</html>
+    

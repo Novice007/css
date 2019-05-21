@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>css实现图片自适应宽高</title>
+        <meta charset="utf-8"/>
+        <style>
+            .container {
+                width: 200px;
+                /* height: 100px; */
+                overflow: hidden;
+                box-shadow: 0 0 20px red;
+                margin: 0 auto;
+            }
+            .box {
+                white-space: nowrap;
+                animation: carsous  10s linear infinite;
+                /* display: table-cell;
+                vertical-align: middle; */
+                font-size: 0 /*img图片间有空隙font-size:0的样式可以消除空隙*/
+            }
+            .flex-img {
+                max-width: 200px;
+                /* max-height: 100px; */
+                vertical-align: middle; /*可以让高度小于最大图片高度的元素垂直居中*/
+            }
+            @keyframes carsous {
+                0%, 14% {
+                    margin-left: 0
+                }
+                21%, 35% {
+                    margin-left: -200px;
+                }
+                42%, 56% {
+                    margin-left: -400px
+                }
+                63%, 77% {
+                    margin-left: -600px
+                }
+                84%, 100%{
+                    margin-left: -800px
+                }
+            } 
+            
+            .img-wrap{
+                position: relative;
+                width: 100%;
+                height: 300px;
+                background: skyblue;
+                background-image: url('http://www.pptbz.com/pptpic/UploadFiles_6909/201203/2012031220134655.jpg');
+                background-repeat: no-repeat;
+                background-position: center top;
+                background-size: cover
+            }
+
+            /* .test{
+                position: relative;
+                width: 100px;
+                height: 100px;
+                background: #000;
+            }
+            .test:after{
+                position: absolute;
+                top: 100px;
+                left: 0;
+                right: 0;
+                content: "伪元素居中";
+                text-align: center;
+                height:  50px;
+                line-height: 50px;
+                border: 1px solid red;
+            } */
+            .qr-container{
+                width: 100px;
+                display: inline-block;
+                border: 1px solid #000;
+            }
+
+            .qr-code{
+                width: 100px;
+                height: 100px;
+                background: #000;
+            }
+            .qr-text{
+                display: table-cell;
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="box">
+                <img class="flex-img" src="http://hbimg.b0.upaiyun.com/fc5ea1910ac41d53bb7fb6e10b038032b990a0b16d81-RpYXSy_fw658" onclick="javascript:window.location.href='https://www.baidu.com'"/>
+                <img class="flex-img" src="http://www.pptbz.com/pptpic/UploadFiles_6909/201203/2012031220134655.jpg" onclick="javascript:window.location.href='https://www.baidu.com'"/>
+                <img class="flex-img" src="http://www.pptok.com/wp-content/uploads/2012/08/xunguang-4.jpg" onclick="javascript:window.location.href='https://www.baidu.com'"/>
+                <img class="flex-img" src="http://img1.xcarimg.com/album/2144/4498/m_20120214171512830487.jpg" onclick="javascript:window.location.href='https://www.baidu.com'"/>
+                <img class="flex-img" src="http://pic17.nipic.com/20111031/8166867_002049106165_2.jpg" onclick="javascript:window.location.href='https://www.baidu.com'"/>
+            </div>
+            <!-- <img class="flex-img" src="https://www.baidu.com/img/bd_logo1.png"/> -->
+        </div>
+
+        <div class="img-wrap">
+        </div>
+        
+        <div class="qr-container">
+            <div class="qr-code"></div>
+            <p class="qr-text">文字描述</p>
+        </div>
+    </body>
+</html>
+
+
+<!--
+    max-width: 可以设置图片最大宽度，此时图片的高度会根据图片的清晰比例自动变化达到不失真的情况，俗称高度自适应
+    
+    max-height: 设置了max-height后，max-width将会自适应以达到图片不失真的效果，此时max-width将会失去作用.
+
+    max-width：解决了外卖店铺列表轮播图按照图片最大高度显示的问题，不需要操作dom减少了成本
+-->

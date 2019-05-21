@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>水平垂直居中浮动元素</title>
+        <meta charset="utf-8"/>
+        <style>
+            .container{
+                height: 300px;
+                width: 100%;
+                background:#ccc;
+            }
+            
+            .left {
+                float: left;
+                width: 100px;
+                height: 100%;
+                background: blue;
+
+            }
+            .right {
+                background: red;
+                height: 100%;
+
+                margin-top: 10px; /*当left设置了margin-top时，再设置right的margin-top则会出现外边距合并，可以对container使用overflow使其产生bfc*/
+            }
+
+            .img-box {
+                /* width: 300px;
+                height: 300px; */
+                position: relative;
+                width: 300px;
+                padding: 30% 0 0;
+                overflow: hidden;
+                margin: 0 auto;
+            }
+            .img-show {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+
+            }
+        </style>
+
+    </head>
+    <body>
+       
+        <div class="container">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <div class="img-box">
+            <img class="img-show" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1725335508,315829243&fm=27&gp=0.jpg"/>
+        </div>
+        <!--
+
+            水平居中可以在浮动元素样式中添加
+                margin-left: 50%;
+                position: relative;
+                left: -width/2
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -width/2
+                margin-top: -height/2
+
+
+
+            垂直居中在浮动元素上动手脚：
+                position: relative;
+                top: 50%;
+                margin-top: -height/2
+
+            垂直居中可以在浮动元素的父元素上动手脚：
+                padding-top: (父元素高度-浮动元素高度)/2
+                box-sizing: border-box;
+
+                缺点：
+                    高度不固定时不好处理
+
+
+                // 父元素需要设置宽高，否则父元素的宽高跟浮动元素一样
+                display: table-cell;
+                vertical-align: middle;
+
+            
+        -->
+    </body>
+</html>

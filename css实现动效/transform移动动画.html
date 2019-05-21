@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width"/>
+        <title>css实现spinner加载动画</title>
+        <style>
+            body {
+                background: #000;
+            }
+            .spinner{
+                position: relative;
+                width: 100px;
+                height: 100px;
+                /*animation: spin 1s linear infinite; 这个速度曲线的旋转实现的效果没有白色块旋转移动的效果有点死板*/
+                animation: spin 2s steps(12, end) infinite;
+                margin: 200px auto;
+            }
+            .spinner i {
+                position: absolute;
+                left: 50%;
+                display: block;
+                width: 6px;
+                height: 30px;
+                border-radius: 30px;
+                background: #fff;
+                transform-origin: center 50px; /*50px可以实现每个i之间不会粘连在一点而是分开*/
+                margin-left: -3px; /*整个旋转不会抖动*/
+            }
+            .spinner i:nth-child(1) {
+                transform: rotate(0);
+                opacity: .08
+            }
+            .spinner i:nth-child(2) {
+                transform: rotate(30deg);
+                opacity: .167
+            }
+            .spinner i:nth-child(3) {
+                transform: rotate(60deg);
+                opacity: .25
+            }
+            .spinner i:nth-child(4) {
+                transform: rotate(90deg);
+                opacity: .33
+            }
+            .spinner i:nth-child(5) {
+                transform: rotate(120deg);
+                opacity: .41
+            }
+            .spinner i:nth-child(6) {
+                transform: rotate(150deg);
+                opacity: .49
+            }
+            .spinner i:nth-child(7) {
+                transform: rotate(180deg);
+                opacity: .57
+            }
+            .spinner i:nth-child(8) {
+                transform: rotate(210deg);
+                opacity: .65
+            }
+            .spinner i:nth-child(9) {
+                transform: rotate(240deg);
+                opacity: .73
+            }
+            .spinner i:nth-child(10) {
+                transform: rotate(270deg);
+                opacity: .81
+            }
+            .spinner i:nth-child(11) {
+                transform: rotate(300deg);
+                opacity: .89
+            }
+            .spinner i:nth-child(12) {
+                transform: rotate(330deg);
+                opacity: 1
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg)
+                }
+            }
+            
+            .box{
+                width: 100px;
+                height: 100px;
+                background: red;
+                transition: transform 1s linear;
+                
+            }
+            .box:hover{
+                transform: translate(100px,0)
+            }
+
+            .paused{
+                width: 100px;
+                height: 100px;
+                background: red;
+                animation: move 5s linear Infinite;
+            }
+            .paused:hover {
+                animation-play-state: paused
+            }
+            @keyframes move{
+                0% {
+                    margin-left: 0
+                }
+                50%{
+                    margin-left: 1000px;
+                }
+                100% {
+                    margin-left: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            transform-origin: center 50px(这个50px是拉开棍子之间的距离)
+            width:6px是避免宽度过大形成原形的视觉
+            animation: spin 1s steps(12, end) infinite;(steps函数不怎么连贯，速度较慢)
+
+
+            实现的spinner加载动画需要添加 i 的样式中添加margin-left: -3px   才可以让动画不晃动
+        -->
+        <div class="spinner">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>  
+        <div class="box"></div>
+        <div class="paused"></div>
+        <div style="height: 1000vh"></div>
+        <script>
+            function debounce(fn, wait) {
+                
+                var timer = null;
+                return function(){
+                    console.log("return后执行", timer,Date.now())
+                    //timer && clearTimeout(timer); // 清除上一次的定时器，避免产生多个定时器
+                    timer = setTimeout(fn,wait); // 新建定时器
+                }
+            }
+
+            // 时间戳
+            function throttle(fn, delay) {
+                    var prev = Date.now();
+                    return function(){
+                        var context = this,
+                            args = arguments,
+                            now = Date.now();
+                        
+                        if (now - prev >= delay) {
+                            fn.apply(context, args);
+                            prev = Date.now()
+                        }
+                    }
+                }
+                
+                // 定时器：跟防抖函数的却别是，防抖函数会清除上个timer
+                function throttle(fn, delay){
+                    var timer = null;
+                    return function(){
+                        var context = this,
+                            args = arguments;
+
+                        if (!timer) {
+                            timer = setTimeout(function(){
+                                fn.apply(context, args)
+                                timer = null
+                            }, delay)
+                        }
+                    }
+                }
+
+
+            function handle(){
+                // console.log("我是防抖函数", Date.now())
+                console.log("我是节流函数", Date.now())
+            }
+
+            // document.addEventListener('scroll', debounce(handle, 100)) // debounce估计是怕全局变量timer，清除时影响到全局环境中其它timer
+            document.addEventListener('scroll', throttle(handle, 1000)) 
+        </script>              
+    </body>
+</html>
+    

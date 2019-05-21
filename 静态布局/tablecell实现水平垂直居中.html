@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>css实现table-cell水平垂直居中</title>
+        <meta charset="utf-8"/>
+        <style>
+            .container{
+                width: 600px;
+                height: 400px;
+                margin: auto;
+                background: #999;
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
+            
+            .middle {
+                /* display: inline-block; */
+                margin: auto;
+                width: 100px;
+                height: 100px;
+                background: aqua;
+            }
+            
+        </style>
+    </head>
+    <body>
+       
+        <!-- <div class="container">
+            <div class="middle"></div> <!--块级元素，text-align:center并不会让其水平居中，可以通过margin: 0 auto或者 display: inline-block（块级与行内元素均可）的方式让块级元素水平居中-->
+            <!-- <span class="middle"></span> -->
+        <!-- </div> -->
+        <header>头部</header>
+        <nav>导航</nav>
+        <section>
+            <aside>侧边栏</aside>
+            <article>内容区域</article>
+        </section>
+        <footer>底部</footer>
+
+    </body>
+</html>

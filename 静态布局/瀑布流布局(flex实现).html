@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>display:flex实现瀑布流布局</title>
+        <meta charset="utf-8"/>
+        <style>
+            .container {
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 400px;
+                /* height: 600px; */
+                overflow-x: hidden;
+                overflow-y: scroll;
+                -webkit-overflow-scrolling: touch;
+            }
+            .queue {
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: column;
+                flex-basis: 24%;
+            }
+            .queue:nth-child(1) {
+                background: skyblue;
+            }
+            .queue:nth-child(1) .row{
+                height: 50px;
+                margin: 10px 0;
+                background: pink;
+            }
+            .queue:nth-child(2) {
+                background: blue;
+            }
+            .queue:nth-child(2) .row{
+                height: 75px;
+                margin: 10px 0;
+                background: pink;
+            }
+            .queue:nth-child(3) {
+                background: yellow;
+            }
+            .queue:nth-child(3) .row{
+                height: 100px;
+                margin: 10px 0;
+                background: pink;
+            }
+            .queue:nth-child(4) {
+                background: red;
+            }
+            .queue:nth-child(4) .row{
+                height: 125px;
+                margin: 10px 0;
+                background: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            瀑布流布局
+                使用scss，可以在css中使用js计算，比较方便，但是渲染效率是否回因此变慢？
+        -->
+        <div class="container">
+            <div class="queue">
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+            </div>
+            <div class="queue">
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                </div>
+                <div class="queue">
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                    </div>
+                    <div class="queue">
+                            <div class="row"></div>
+                            <div class="row"></div>
+                            <div class="row"></div>
+                            <div class="row"></div>
+                            <div class="row"></div>
+                        </div>
+        </div>
+    </body>
+</html>

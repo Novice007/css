@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>水平垂直居中浮动元素</title>
+        <meta charset="utf-8"/>
+        <style>
+            .container{
+                position:relative;
+                height: 500px;
+                width: 1000px;
+                background:#ccc;
+            }
+            
+            .relative {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                width: 50%;
+                height: 50%;
+                padding-top: 10%;
+                padding-left: 5%;
+                margin-top: 5%;
+                margin-left: 5%;
+                background: skyblue;
+            }
+
+            .absolute{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 50%;
+                height: 50%;
+                padding-top: 10%;
+                padding-left: 5%;
+                margin-top: 5%;
+                margin-left: 5%;
+                background: red;
+            }
+
+        </style>
+
+    </head>
+    <body>
+       
+        <div class="container">
+            <div class="relative"></div>
+        </div>
+        <div class="container">
+            <div class="absolute"></div>
+        </div>
+    </body>
+</html>
+
+<!--
+    总结：
+        1、padding和margin百分比相对于父级元素的宽度
+        
+        2、top与left则是定位父级的高度与宽度
+            其中relative的元素，它的宽高是父级的width与height不包括padding
+            而absolute的元素，它的宽高包括父级的padding
+-->
